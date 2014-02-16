@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shipwire</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/elusive-webfont.css">
+</head>
+<body>  
+  <section id="main">
+    <section id="shipwire">
+    </section>
+  </section>
+  <script type="text/template" id="product-row-template">
+    <td><%= name %></td>
+    <td><%= description %></td>
+    <td class='el-icon-info-sign'>Details</td>
+  </script>
+  <script type="text/template" id="each-item-template">
+    <table id="product-details">
+      <thead>
+        <th>Product Detail</th>
+        <th>Value</th>
+        <th>Edit Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product Name</td><td><%=name%></td>
+          <td><input class="edit" data-id='name' value='<%- name %>' /></td>
+        </tr>
+        <tr>
+          <td>Description</td><td><%=description%></td> 
+          <td><input class="edit" data-id='description' value='<%- description %>' /></td>
+        </tr>
+        <tr>
+          <td>Width</td><td><%=width%></td>
+          <td><input class="edit" data-id="width" value='<%- width %>' /></td>
+        </tr>
+        <tr>
+          <td>Length</td><td><%=length%></td> 
+          <td><input class="edit" data-id="length" value='<%- length %>' /></td>
+        </tr>
+        <tr>
+          <td>Height</td><td><%=height%></td>
+          <td><input class="edit" data-id="height" value='<%- height %>' /></td>
+        </tr>
+        <tr>
+          <td>Weight</td><td><%=weight%></td> 
+          <td><input class="edit" data-id="weight" value='<%- weight %>' /></td>
+        </tr>
+        <tr>
+          <td>Value</td><td><%=value%></td>
+          <td><input class="edit" data-id="value" value='<%- value %>' /></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="deleteItem">Delete this item permanently</button>
+    <a href="#">Back to Catalog</a>
+  </script>
+  <script type="text/template" id="product-create-template">
+    <h1>Enter new product information:</h1>
+    <form id="addProd">
+      <label for="name">Name </label>
+      <input type="text" id="name" placeholder="Bicycle"></br>
+      <label for="description">Description </label>
+      <input type="textarea" id="description" placeholder="maxlength is 100chars"></br>
+      <label for="width">Width </label>
+      <input type="number" id="width" placeholder="width in inches"></br>
+      <label for="length">Length </label>
+      <input type="number" id="length" placeholder="length in inches"></br>
+      <label for="height">Height </label>
+      <input type="number" id="height" placeholder="height in inches"></br>
+      <label for="weight">Weight </label>
+      <input type="number" id="weight" placeholder="weight in lbs"></br>
+      <label for="value">Value </label>
+      <input type="number" id="value" placeholder="value in US $"></br>
+      <button type="button" id="next-prod">Add</button></br>
+      <a href="">Back to catalog</a></br>
+    </form>
+    <section id="msgs">
+    </section>
+  </script>
+  <script type="text/template" id="catalog-template">
+    <header id="header">
+      <h1>Shipwire</h1>
+      <h2>Product Catalog</h2>
+    </header>
+    <section id="product-body"> 
+      <table id="catalog-table">
+        <thead>
+         <tr>
+           <th class="medium-cell">Product Name</th>
+           <th class="large-cell">Description</th>
+         </tr>
+        </thead>
+        <tbody id="product-info">
+        </tbody>
+      </table>
+      <section id="msgs">
+      </section>
+      <footer id="catalog-controls">
+      <button type="button" class="add-product">Add a product</button>
+      </footer>
+    </section>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js"></script>
+  <script src="javascripts/models/product.js"></script>
+  <script src="javascripts/models/error.js"></script>
+  <script src="javascripts/collections/products.js"></script>
+  <script src="javascripts/views/product.js"></script>
+  <script src="javascripts/views/product2.js"></script>
+  <script src="javascripts/views/createProduct.js"></script>
+  <script src="javascripts/views/error.js"></script>
+  <script src="javascripts/views/TopView.js"></script>
+  <script src="javascripts/router.js"></script>
+  <script src="javascripts/app.js"></script>
+</body>
+</html>

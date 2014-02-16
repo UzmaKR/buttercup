@@ -1,0 +1,33 @@
+
+#shipwire table {
+	border-collapse: collapse;
+}
+
+table tr th, table tr td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+table thead .small-cell {
+  width: 5em;
+}
+
+table thead .medium-cell {
+  width: 10em;
+}
+
+table thead .large-cell {
+  width: 15em;
+}
+
+table {
+	margin-bottom: 5px;
+}
+
+[class*="el-icon-"] {
+  margin-right: 5px;
+}
+
+table td[class*="el-icon-"] {
+	border: none;
+}
