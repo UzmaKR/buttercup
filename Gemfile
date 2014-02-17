@@ -4,7 +4,10 @@ gem 'rails', '3.2.14'
 gem 'pg'
 gem 'strong_parameters', '0.2.0'
 gem 'monban', '0.0.6'
-gem 'rails_12factor', group: :production
+
+group :development do
+  gem 'sqlite3'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -12,6 +15,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :production do
+  # ruby '2.0.0'
+  gem 'rails_12factor'
+  # gem 'pg'
+end
 
+gem 'jquery-rails'
 ruby '2.0.0'
