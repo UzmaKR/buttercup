@@ -26,8 +26,6 @@ app.ProductView = Backbone.View.extend({
   showDetails: function() {
     var id = this.model.get('id');
     router.navigate('products/'+id, {trigger: true});
-  	// var view = new app.ItemDetailsView({model: this.model});
-  	// app.AppView.showDetails(view.render().$el);
   }
 
 });

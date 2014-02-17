@@ -41,7 +41,7 @@ app.ItemDetailsView = Backbone.View.extend({
   },
 
   backToMain: function() {
-    router.navigate('', {trigger: true});
+    router.navigate('products', {trigger: true});
   }
 
 });

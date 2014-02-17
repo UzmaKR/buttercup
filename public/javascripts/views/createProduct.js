@@ -7,22 +7,19 @@ app.newProductView = Backbone.View.extend({
     this.listenTo(app.ProductList, 'add', this.successMsg);
     this.listenTo(app.ProductList, 'invalid', this.errorMsg);
     this.render();
-    $('a').click(function() {
-      router.navigate('', {trigger: true}); 
-    });
   },
 
   newProdTmpl: _.template($('#product-create-template').html()),
 
   events: {
     'click #next-prod': 'saveProdInfo',
+    'click a#catalog-back': 'backToCatalog'
   },
 
   render: function() {
    var view = this.$el.html(this.newProdTmpl());
    $('#shipwire').empty();
    $('#shipwire').append(view);
-   // return this;
   },
 
   saveProdInfo: function(e) {
@@ -53,9 +50,9 @@ app.newProductView = Backbone.View.extend({
     }
   },
 
-  backToMain: function(e) {
-  	e.preventDefault();
-    app.AppView.render();
+  backToCatalog: function(e) {
+    e.preventDefault();
+    router.navigate('products', {trigger: true});
   }
 
 

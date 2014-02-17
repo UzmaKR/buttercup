@@ -12,8 +12,8 @@ app.Product = Backbone.Model.extend({
     value: 25
   },
 
-  url: function() { //only used to edit & sync with server
-    if (this.isNew()) return 'products'
+  url: function() { 
+    if (this.isNew()) return 'products';
     return this.get('id');
   },
 

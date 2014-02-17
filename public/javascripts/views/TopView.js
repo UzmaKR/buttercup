@@ -13,6 +13,10 @@ app.TopView = Backbone.View.extend({
       router.navigate('new', {trigger: true}); 
     });
   },
+
+  events: {
+    'click .back-to-home': 'goHome'
+  },
   
   render: function() {
     var self = this;
@@ -35,6 +39,10 @@ app.TopView = Backbone.View.extend({
   showDetails: function(itemDetailView) {
     (this.prodTable).empty();
     (this.prodTable).append(itemDetailView);
+  },
+
+  goHome: function() {
+    router.navigate('', {trigger: true} );
   }
 
   
