@@ -7,7 +7,14 @@ usStates = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
  			"NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
  			"SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 
-$(function() {
-	router = new app.Controller();
-	Backbone.history.start( {pushState: true} );
+define(['backbone', 'router'],
+	function(Backbone, Controller) {
+
+      $(function() {
+	     router = new Controller();
+	     Backbone.history.start( {pushState: true} );
+      });
+
+
 });
+
