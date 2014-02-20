@@ -1,35 +1,40 @@
 
 var app = app || {};
 
-app.HomePage = Backbone.View.extend({
+define(['jquery', 'underscore', 'Backbone'],
+  function($, _, Backbone) {
 
-  el: '#shipwire',
+    return Backbone.View.extend({
 
-  initialize: function() {
-    this.render();
-  },
+      el: '#shipwire',
 
-  homeTmpl: _.template( $('#home-page-template').html() ),
+      initialize: function() {
+        this.render();
+      },
 
-  events: {
-    'click #orderlist': 'orderIndex',
-    'click #productlist': 'productIndex'
+      homeTmpl: _.template( $('#home-page-template').html() ),
 
-  },
+      events: {
+        'click #orderlist': 'orderIndex',
+        'click #productlist': 'productIndex'
 
-  render: function() {
-  	this.$el.empty();
-    this.$el.html( this.homeTmpl() );
-    this.delegateEvents();
-  },
+      },
 
-  orderIndex: function() {
-    router.navigate('orders', {trigger: true} );
-  },
+      render: function() {
+      	this.$el.empty();
+        this.$el.html( this.homeTmpl() );
+        this.delegateEvents();
+      },
 
-  productIndex: function() {
-    router.navigate('products', {trigger: true} );
-  }
+      orderIndex: function() {
+        router.navigate('orders', {trigger: true} );
+      },
 
+      productIndex: function() {
+        router.navigate('products', {trigger: true} );
+      }
+
+
+    });
 
 });

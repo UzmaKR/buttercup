@@ -1,11 +1,15 @@
 var app = app || {}
 
-app.Products = Backbone.Collection.extend({
+define(['backbone', 'models/product'],
+  function(Backbone, ProductModel) {
 
-  model: app.Product,
+	return Backbone.Collection.extend({
 
-  url: '/products'
+	  model: ProductModel,
 
+	  url: '/products'
+
+	});
 });
 
 app.ProductList = new app.Products();

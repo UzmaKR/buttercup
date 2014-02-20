@@ -1,29 +1,33 @@
 var app = app || {};
 
-app.OrderDetailView = Backbone.View.extend({
+define(['qjuery', 'underscore', 'Backbone', 'models/order'],
+  function($, _, Backbone, OrderModel) {
 
-  model: app.Order,
+    return Backbone.View.extend({
 
-  detailTmpl: _.template( $('#single-order-template').html() ),  
+      model: OrderModel,
 
-  initialize: function() {
-    this.render();
-  },
+      detailTmpl: _.template( $('#single-order-template').html() ),  
 
-  events: {
-  	'click a#order-back':'gotoOrders'
-  },
+      initialize: function() {
+        this.render();
+      },
 
-  render: function() {
-    var view = this.$el.html( this.detailTmpl( this.model.toJSON() )  );
-    $('#shipwire').empty();
-    $('#shipwire').append(view);
-    // this.delegateEvents();
-  },
+      events: {
+      	'click a#order-back':'gotoOrders'
+      },
 
-  gotoOrders: function() {
-    router.navigate('orders',{trigger: true} );
-  }
+      render: function() {
+        var view = this.$el.html( this.detailTmpl( this.model.toJSON() )  );
+        $('#shipwire').empty();
+        $('#shipwire').append(view);
+      },
 
+      gotoOrders: function() {
+        router.navigate('orders',{trigger: true} );
+      }
+
+
+    });
 
 });

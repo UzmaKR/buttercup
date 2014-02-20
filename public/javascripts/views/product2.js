@@ -1,47 +1,52 @@
 var app = app || {};
 
-app.ItemDetailsView = Backbone.View.extend({
+define(['jquery', 'underscore', 'Backbone', 'models/product'],
+  function($, _, Backbone, ProductModel) {
 
-  model: app.Product,
+    return Backbone.View.extend({
 
-  initialize: function() {
-    (this.model).on('change',this.render,this);
-    this.render();
-  },
+      model: ProductModel,
 
-  events: {
-    'keypress .edit': 'editOnEnter',
-    'click #deleteItem': 'deleteItem',
-    'click a': 'backToMain'
-  },
+      initialize: function() {
+        (this.model).on('change',this.render,this);
+        this.render();
+      },
 
-  tpl: _.template($('#each-item-template').html()),
+      events: {
+        'keypress .edit': 'editOnEnter',
+        'click #deleteItem': 'deleteItem',
+        'click a': 'backToMain'
+      },
 
-  render: function() {
-    var view = this.$el.html(this.tpl(this.model.toJSON()));
-    $('#shipwire').empty();
-    $('#shipwire').append(view);
-    this.delegateEvents();
-  },
+      tpl: _.template($('#each-item-template').html()),
 
-  editOnEnter: function(e) {
-    if (e.which === ENTER_KEY)  {
-      var prop = $(e.currentTarget).data("id");
-      var newValue = $(e.currentTarget).val().trim();
-      this.model.set(prop, newValue);
-      this.model.save();
-      app.ProductList.add(this.model, {merge: true, add: false, change: false});
-    }
-  },
+      render: function() {
+        var view = this.$el.html(this.tpl(this.model.toJSON()));
+        $('#shipwire').empty();
+        $('#shipwire').append(view);
+        this.delegateEvents();
+      },
 
-  deleteItem: function() {
-    console.log('in deleteItem');
-  	app.ProductList.remove(this.model);
-  	this.backToMain();
-  },
+      editOnEnter: function(e) {
+        if (e.which === ENTER_KEY)  {
+          var prop = $(e.currentTarget).data("id");
+          var newValue = $(e.currentTarget).val().trim();
+          this.model.set(prop, newValue);
+          this.model.save();
+          app.ProductList.add(this.model, {merge: true, add: false, change: false});
+        }
+      },
 
-  backToMain: function() {
-    router.navigate('products', {trigger: true});
-  }
+      deleteItem: function() {
+        console.log('in deleteItem');
+      	app.ProductList.remove(this.model);
+      	this.backToMain();
+      },
+
+      backToMain: function() {
+        router.navigate('products', {trigger: true});
+      }
+
+    });
 
 });

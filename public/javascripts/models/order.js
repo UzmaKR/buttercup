@@ -1,7 +1,12 @@
 
 var app = app || {};
 
-app.Order = Backbone.Model.extend({
+define(['backbone'],
+    function(Backbone) {
+
+
+    
+  return Backbone.Model.extend({
 
   default: {
     recipientName: 'elvis presley',
@@ -36,6 +41,7 @@ app.Order = Backbone.Model.extend({
     }  
     
   }
-
+  
+  });
 
 });

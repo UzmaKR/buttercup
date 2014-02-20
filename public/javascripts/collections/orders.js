@@ -1,13 +1,16 @@
 
 var app = app || {};
 
-app.Orders = Backbone.Collection.extend({
+define(['backbone', 'models/order'],
+  function(Backbone, OrderModel) {
+	return Backbone.Collection.extend({
 
-  model: app.Order,
+	  model: OrderModel,
 
-  url: '/orders'
+	  url: '/orders'
 
 
+	});
 });
 
 app.OrderList = new app.Orders();

@@ -1,32 +1,38 @@
 
 var app = app || {};
 
-app.OrderView = Backbone.View.extend({
+define(['jquery', 'underscore', 'backbone', 'models/order'],
 
-  tagName: 'tr',
+  function($, _, Backbone, OrderModel) {
 
-  model: app.Order,
+    return Backbone.View.extend({
 
-  initialize: function() {
-    this.render();
-  },
+      tagName: 'tr',
 
-  events: {
-    'click td.el-icon-info-sign': 'showOrderDetails'
-  },
+      model: OrderModel,
 
-  tpl: _.template('<td><%= recipientName %></td>'+
-                  '<td><%= productName %></td>'+
-                  "<td class='el-icon-info-sign'>Details</td>"),
+      initialize: function() {
+        this.render();
+      },
 
-  render: function() {
-    this.$el.html( this.tpl(this.model.toJSON()) );
-    return this;
-  },
+      events: {
+        'click td.el-icon-info-sign': 'showOrderDetails'
+      },
 
-  showOrderDetails: function() {
-    router.navigate('orders/'+this.model.get('id'),{trigger: true});
-  }
+      tpl: _.template('<td><%= recipientName %></td>'+
+                      '<td><%= productName %></td>'+
+                      "<td class='el-icon-info-sign'>Details</td>"),
 
+      render: function() {
+        this.$el.html( this.tpl(this.model.toJSON()) );
+        return this;
+      },
+
+      showOrderDetails: function() {
+        router.navigate('orders/'+this.model.get('id'),{trigger: true});
+      }
+
+
+    });
 
 });

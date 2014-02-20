@@ -1,6 +1,9 @@
 var app = app || {};
 
-app.Product = Backbone.Model.extend({
+define(['backbone'],
+  function(Backbone) {
+
+  return Backbone.Model.extend({
 
   default: {
     name: 'tennis racket',
@@ -40,4 +43,7 @@ app.Product = Backbone.Model.extend({
     removedModel.destroy();
   }
 
+  });
+
 });
+

@@ -1,7 +1,10 @@
 
 var app = app ||{};
 
-app.newProductView = Backbone.View.extend({
+define(['jquery', 'underscore', 'Backbone'],
+    function($, _, Backbone) {
+
+  return Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(app.ProductList, 'add', this.successMsg);
@@ -55,5 +58,7 @@ app.newProductView = Backbone.View.extend({
     router.navigate('products', {trigger: true});
   }
 
+
+  });
 
 });

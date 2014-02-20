@@ -1,33 +1,37 @@
 var app = app || {};
 
-app.ProductView = Backbone.View.extend({
+define(['jquery', 'underscore','backbone', 'models/product'],
+  function($, _, Backbone, ProductModel) {
 
-  tagName: 'tr',
+      return Backbone.View.extend({
 
-  model: app.Product,
+          tagName: 'tr',
 
-  initialize: function() {
-    this.render();
-  },
+          model: ProductModel,
 
-  events: {
-    'click ': 'showDetails'
-  },
+          initialize: function() {
+            this.render();
+          },
 
-  tpl: _.template('<td><%= name %></td>'+
-  	  			  '<td><%= description %></td>'+
-  	  			  "<td class='el-icon-info-sign'>Details</td>"),
+          events: {
+            'click ': 'showDetails'
+          },
 
-  render: function() {
-    this.$el.html(this.tpl(this.model.toJSON()));
-    return this;
-  },
+          tpl: _.template('<td><%= name %></td>'+
+          	  			  '<td><%= description %></td>'+
+          	  			  "<td class='el-icon-info-sign'>Details</td>"),
 
-  showDetails: function() {
-    var id = this.model.get('id');
-    router.navigate('products/'+id, {trigger: true});
-  }
+          render: function() {
+            this.$el.html(this.tpl(this.model.toJSON()));
+            return this;
+          },
+
+          showDetails: function() {
+            var id = this.model.get('id');
+            router.navigate('products/'+id, {trigger: true});
+          }
+
+      });
 
 });
-
 
