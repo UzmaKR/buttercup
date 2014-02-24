@@ -1,0 +1,40 @@
+    <table id="product-details">
+      <thead>
+        <th>Product Detail</th>
+        <th>Value</th>
+        <th>Edit Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product Name</td><td><%=name%></td>
+          <td><input class="edit" data-id='name' value='<%- name %>' /></td>
+        </tr>
+        <tr>
+          <td>Description</td><td><%=description%></td> 
+          <td><input class="edit" data-id='description' value='<%- description %>' /></td>
+        </tr>
+        <tr>
+          <td>Width</td><td><%=width%></td>
+          <td><input class="edit" data-id="width" value='<%- width %>' /></td>
+        </tr>
+        <tr>
+          <td>Length</td><td><%=length%></td> 
+          <td><input class="edit" data-id="length" value='<%- length %>' /></td>
+        </tr>
+        <tr>
+          <td>Height</td><td><%=height%></td>
+          <td><input class="edit" data-id="height" value='<%- height %>' /></td>
+        </tr>
+        <tr>
+          <td>Weight</td><td><%=weight%></td> 
+          <td><input class="edit" data-id="weight" value='<%- weight %>' /></td>
+        </tr>
+        <tr>
+          <td>Value</td><td><%=value%></td>
+          <td><input class="edit" data-id="value" value='<%- value %>' /></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="deleteItem">Delete this item permanently</button>
+    <a href="#">Back to Catalog</a>
+ 

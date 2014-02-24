@@ -1,4 +1,4 @@
-var app = app || {};
+
 ENTER_KEY = 13;
 
 usStates = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
@@ -7,11 +7,13 @@ usStates = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
  			"NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
  			"SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 
-define(['backbone', 'router'],
-	function(Backbone, Controller) {
+define(['backbone', 'shared', 'collections/products', 'collections/orders', 'router'],
+	function(Backbone, shared, ProductList, OrderList, Router) {
 
       $(function() {
-	     router = new Controller();
+	     shared.router = new Router();
+	     shared.productList = new ProductList();
+	     shared.orderList = new OrderList();
 	     Backbone.history.start( {pushState: true} );
       });
 

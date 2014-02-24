@@ -1,7 +1,5 @@
-var app = app || {};
-
-define(['backbone'],
-  function(Backbone) {
+define(['backbone', 'shared'],
+  function(Backbone, shared) {
 
   return Backbone.Model.extend({
 
@@ -21,7 +19,7 @@ define(['backbone'],
   },
 
   initialize: function() {
-    this.listenTo(app.ProductList,'remove',this.clearIt);
+    this.listenTo(shared.productList,'remove',this.clearIt);
   },
 
   validate: function(attrs) {

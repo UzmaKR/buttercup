@@ -1,7 +1,5 @@
-var app = app || {};
-
-define(['jquery', 'underscore','backbone', 'models/product'],
-  function($, _, Backbone, ProductModel) {
+define(['jquery', 'underscore','backbone', 'models/product','shared','text!templates/productRow.html'],
+  function($, _, Backbone, ProductModel, shared, ProductRowTmpl) {
 
       return Backbone.View.extend({
 
@@ -17,9 +15,7 @@ define(['jquery', 'underscore','backbone', 'models/product'],
             'click ': 'showDetails'
           },
 
-          tpl: _.template('<td><%= name %></td>'+
-          	  			  '<td><%= description %></td>'+
-          	  			  "<td class='el-icon-info-sign'>Details</td>"),
+          tpl: _.template( ProductRowTmpl ),
 
           render: function() {
             this.$el.html(this.tpl(this.model.toJSON()));
@@ -28,7 +24,7 @@ define(['jquery', 'underscore','backbone', 'models/product'],
 
           showDetails: function() {
             var id = this.model.get('id');
-            router.navigate('products/'+id, {trigger: true});
+            shared.router.navigate('products/'+id, {trigger: true});
           }
 
       });

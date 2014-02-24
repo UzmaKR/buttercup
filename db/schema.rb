@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20140216234518) do
   create_table "orders", :force => true do |t|
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "recipientName"
     t.string   "streetAddress"
     t.string   "city"
     t.string   "state"
@@ -23,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20140216234518) do
     t.integer  "phoneNumber"
     t.string   "productName"
     t.integer  "quantity"
-    t.string   "recipientName"
   end
 
   add_index "orders", ["city"], :name => "index_orders_on_city"

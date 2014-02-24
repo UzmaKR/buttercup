@@ -1,9 +1,7 @@
 
-var app = app || {};
+define(['jquery', 'underscore', 'backbone', 'models/order', 'shared'],
 
-define(['jquery', 'underscore', 'backbone', 'models/order'],
-
-  function($, _, Backbone, OrderModel) {
+  function($, _, Backbone, OrderModel, shared) {
 
     return Backbone.View.extend({
 
@@ -29,7 +27,7 @@ define(['jquery', 'underscore', 'backbone', 'models/order'],
       },
 
       showOrderDetails: function() {
-        router.navigate('orders/'+this.model.get('id'),{trigger: true});
+        shared.router.navigate('orders/'+this.model.get('id'),{trigger: true});
       }
 
 

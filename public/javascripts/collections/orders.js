@@ -1,6 +1,3 @@
-
-var app = app || {};
-
 define(['backbone', 'models/order'],
   function(Backbone, OrderModel) {
 	return Backbone.Collection.extend({
@@ -12,5 +9,3 @@ define(['backbone', 'models/order'],
 
 	});
 });
-
-app.OrderList = new app.Orders();

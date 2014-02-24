@@ -1,8 +1,5 @@
-
-var app = app || {};
-
-define(['jquery', 'underscore', 'Backbone'],
-  function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'text!templates/homePage.html', 'shared',],
+  function($, _, Backbone, HomePageTmpl, shared) {
 
     return Backbone.View.extend({
 
@@ -12,7 +9,7 @@ define(['jquery', 'underscore', 'Backbone'],
         this.render();
       },
 
-      homeTmpl: _.template( $('#home-page-template').html() ),
+      homeTmpl: _.template( HomePageTmpl ),
 
       events: {
         'click #orderlist': 'orderIndex',
@@ -27,11 +24,11 @@ define(['jquery', 'underscore', 'Backbone'],
       },
 
       orderIndex: function() {
-        router.navigate('orders', {trigger: true} );
+        shared.router.navigate('orders', {trigger: true} );
       },
 
       productIndex: function() {
-        router.navigate('products', {trigger: true} );
+        shared.router.navigate('products', {trigger: true} );
       }
 
 

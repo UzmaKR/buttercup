@@ -1,18 +1,16 @@
 
-var app = app ||{};
-
-define(['jquery', 'underscore', 'Backbone'],
-    function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'text!templates/newproduct.html', 'shared'],
+    function($, _, Backbone, NewProductTmpl, shared) {
 
   return Backbone.View.extend({
 
   initialize: function() {
-    this.listenTo(app.ProductList, 'add', this.successMsg);
-    this.listenTo(app.ProductList, 'invalid', this.errorMsg);
+    this.listenTo(shared.productList, 'add', this.successMsg);
+    this.listenTo(shared.productList, 'invalid', this.errorMsg);
     this.render();
   },
 
-  newProdTmpl: _.template($('#product-create-template').html()),
+  newProdTmpl: _.template( NewProductTmpl ),
 
   events: {
     'click #next-prod': 'saveProdInfo',
@@ -33,7 +31,7 @@ define(['jquery', 'underscore', 'Backbone'],
       formData[el.id] = $(el).val();
     });
 
-    app.ProductList.create(formData, {validate: true} );  
+    shared.productList.create(formData, {validate: true} );  
 
   },
 
@@ -55,7 +53,7 @@ define(['jquery', 'underscore', 'Backbone'],
 
   backToCatalog: function(e) {
     e.preventDefault();
-    router.navigate('products', {trigger: true});
+    shared.router.navigate('products', {trigger: true});
   }
 
 

@@ -1,11 +1,7 @@
 
-var app = app || {};
-
 define(['backbone'],
     function(Backbone) {
-
-
-    
+ 
   return Backbone.Model.extend({
 
   default: {

@@ -1,7 +1,5 @@
-var app = app || {};
-
-define(['jquery', 'underscore', 'Backbone', 'models/product'],
-  function($, _, Backbone, ProductModel) {
+define(['jquery', 'underscore', 'backbone', 'models/product', 'shared','text!templates/editProduct.html'],
+  function($, _, Backbone, ProductModel, shared, EditProductTmpl) {
 
     return Backbone.View.extend({
 
@@ -18,7 +16,7 @@ define(['jquery', 'underscore', 'Backbone', 'models/product'],
         'click a': 'backToMain'
       },
 
-      tpl: _.template($('#each-item-template').html()),
+      tpl: _.template( EditProductTmpl ),
 
       render: function() {
         var view = this.$el.html(this.tpl(this.model.toJSON()));
@@ -33,18 +31,18 @@ define(['jquery', 'underscore', 'Backbone', 'models/product'],
           var newValue = $(e.currentTarget).val().trim();
           this.model.set(prop, newValue);
           this.model.save();
-          app.ProductList.add(this.model, {merge: true, add: false, change: false});
+          shared.productList.add(this.model, {merge: true, add: false, change: false});
         }
       },
 
       deleteItem: function() {
         console.log('in deleteItem');
-      	app.ProductList.remove(this.model);
+      	shared.productList.remove(this.model);
       	this.backToMain();
       },
 
       backToMain: function() {
-        router.navigate('products', {trigger: true});
+        shared.router.navigate('products', {trigger: true});
       }
 
     });

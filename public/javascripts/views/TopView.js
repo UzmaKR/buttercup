@@ -1,19 +1,17 @@
-var app = app || {}
-
-define(['jquery', 'underscore', 'backbone'], 
-  function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'shared', 'views/product', 'text!templates/catalog.html'], 
+  function($, _, Backbone, shared, ProductView, CatalogTmpl) {
 
     return Backbone.View.extend({
 
       el: '#main',
 
-      topTpl: _.template($('#catalog-template').html()),
+      topTpl: _.template( CatalogTmpl ),
 
       initialize: function() {
         this.prodTable = this.$('#shipwire');
         this.render();
         $('.add-product').click(function() {
-          router.navigate('new', {trigger: true}); 
+          shared.router.navigate('new', {trigger: true}); 
         });
       },
 
@@ -32,7 +30,7 @@ define(['jquery', 'underscore', 'backbone'],
             $('<p>No items in catalog.</p>').appendTo(this.$('#product-body #msgs'));
           }
           this.collection.forEach(function(prod) {
-        	  var view = new app.ProductView( {model: prod} );
+        	  var view = new ProductView( {model: prod} );
             var row = view.render().$el;
         	  (row).appendTo(self.catalogItem);
           });
@@ -45,7 +43,7 @@ define(['jquery', 'underscore', 'backbone'],
       },
 
       goHome: function() {
-        router.navigate('', {trigger: true} );
+        shared.router.navigate('', {trigger: true} );
       }
 
 

@@ -1,9 +1,6 @@
+define(['jquery', 'underscore', 'backbone', 'models/order', 'views/order', 'shared', 'text!templates/orders.html'],
 
-var app = app || {};
-
-define(['jquery', 'underscore', 'Backbone', 'models/order'],
-
-  function($, _, Backbone, OrderModel) {
+  function($, _, Backbone, OrderModel, OrderView, shared, OrdersTmpl) {
 
     return Backbone.View.extend({
 
@@ -20,7 +17,7 @@ define(['jquery', 'underscore', 'Backbone', 'models/order'],
         'click .backhome': 'goHome'
       },
 
-      orderTmpl: _.template( $('#orders-template').html() ),
+      orderTmpl: _.template( OrdersTmpl ),
 
       render: function() {
       	var self = this;
@@ -32,7 +29,7 @@ define(['jquery', 'underscore', 'Backbone', 'models/order'],
             $('<p>No orders placed.</p>').appendTo(this.$('#order-body #msgs'));
           }
           this.collection.forEach(function(order) {
-        	  var view = new app.OrderView( {model: order} );
+        	  var view = new OrderView( {model: order} );
         	  (view.$el).appendTo(self.orderItem);
           });
         }
@@ -40,11 +37,11 @@ define(['jquery', 'underscore', 'Backbone', 'models/order'],
       },
 
       addOrder: function() {
-      	router.navigate('orders/new', {trigger: true} );
+      	shared.router.navigate('orders/new', {trigger: true} );
       },
 
       goHome: function() {
-        router.navigate('', {trigger: true} );
+        shared.router.navigate('', {trigger: true} );
       }
 
 

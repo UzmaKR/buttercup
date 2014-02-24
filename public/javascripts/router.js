@@ -1,8 +1,7 @@
-var app = app || {};
-
 define(['backbone', 'views/homepage', 'views/TopView', 'views/createProduct', 'models/product', 'views/product2',
-        'views/orders', 'views/neworder', 'models/order', 'views/orderDetailView' ],
-  function(Backbone, HomePage, TopView, NewProductView, ProductModel, ProductDetailView, OrderListView, NewOrderView, OrderModel, OrderDetailView) {
+        'views/orders', 'views/neworder', 'models/order', 'views/orderDetailView','shared'],
+  function(Backbone, HomePage, TopView, NewProductView, ProductModel, ProductDetailView, OrderListView, NewOrderView, OrderModel, OrderDetailView,
+            shared) {
 
     return Backbone.Router.extend({
 
@@ -24,9 +23,9 @@ define(['backbone', 'views/homepage', 'views/TopView', 'views/createProduct', 'm
 
       index: function() {
         
-        (app.ProductList).fetch({
+        (shared.productList).fetch({
           success: function() {
-            new TopView({ collection: app.ProductList });
+            new TopView({ collection: shared.productList });
           },
           error: function() {
             console.log('Server error: Could not load products.');
@@ -57,9 +56,9 @@ define(['backbone', 'views/homepage', 'views/TopView', 'views/createProduct', 'm
       },
 
       allOrders: function() {
-        (app.OrderList).fetch({
+        (shared.orderList).fetch({
           success: function() {
-            new OrderListView({ collection: app.OrderList });
+            new OrderListView({ collection: shared.orderList });
           },
           error: function() {
             console.log('Server error: Could not load orders.');
@@ -68,9 +67,9 @@ define(['backbone', 'views/homepage', 'views/TopView', 'views/createProduct', 'm
       },
 
       newOrder: function() {
-        (app.ProductList).fetch({ //get product list
+        (shared.productList).fetch({ //get product list
           success: function() {
-            new NewOrderView( { model: new OrderModel(), collection: app.ProductList } );
+            new NewOrderView( { model: new OrderModel(), collection: shared.productList } );
           },
           error: function() {
             console.log('Server error: Could not load product catalog for orders.');

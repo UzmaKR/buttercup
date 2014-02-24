@@ -1,13 +1,12 @@
-var app = app || {};
 
-define(['jquery', 'underscore', 'backbone'],
-  function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone','text!templates/createorder.html', 'shared'],
+  function($, _, Backbone, CreateOrderTmpl, shared) {
 
     return Backbone.View.extend({
 
       initialize: function() {
-      	this.listenTo(app.OrderList, 'add', this.successMsg);
-        this.listenTo(app.OrderList, 'invalid', this.errorMsg);
+      	this.listenTo(shared.orderList, 'add', this.successMsg);
+        this.listenTo(shared.orderList, 'invalid', this.errorMsg);
         this.render();
       },
 
@@ -16,10 +15,10 @@ define(['jquery', 'underscore', 'backbone'],
         'click #next-order': 'addOrder'
       },
 
-      tmpl: _.template( $('#order-create-template').html() ),
+      tmpl: _.template( CreateOrderTmpl ),
 
       render: function() {
-        var view = this.$el.html( this.tmpl( {products: app.ProductList } ) );
+        var view = this.$el.html( this.tmpl( {products: shared.productList } ) );
         $('#shipwire').empty();
         $('#shipwire').append(view);
       },
@@ -33,7 +32,7 @@ define(['jquery', 'underscore', 'backbone'],
           formData[el.id] = $(el).val();
         });
        
-        app.OrderList.create(formData, {validate: true} ); 
+        shared.orderList.create(formData, {validate: true} ); 
       },
 
       successMsg: function(e) {
@@ -54,7 +53,7 @@ define(['jquery', 'underscore', 'backbone'],
 
       gotoOrderList: function(e) {
         e.preventDefault();
-        router.navigate("orders", {trigger: true} );
+        shared.router.navigate("orders", {trigger: true} );
       }
 
 

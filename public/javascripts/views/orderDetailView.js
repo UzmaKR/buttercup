@@ -1,13 +1,12 @@
-var app = app || {};
 
-define(['qjuery', 'underscore', 'Backbone', 'models/order'],
-  function($, _, Backbone, OrderModel) {
+define(['jquery', 'underscore', 'backbone', 'models/order', 'shared', 'text!templates/readOrder.html'],
+  function($, _, Backbone, OrderModel, shared, ReadOrderTmpl) {
 
     return Backbone.View.extend({
 
       model: OrderModel,
 
-      detailTmpl: _.template( $('#single-order-template').html() ),  
+      detailTmpl: _.template( ReadOrderTmpl ),  
 
       initialize: function() {
         this.render();
@@ -24,7 +23,7 @@ define(['qjuery', 'underscore', 'Backbone', 'models/order'],
       },
 
       gotoOrders: function() {
-        router.navigate('orders',{trigger: true} );
+        shared.router.navigate('orders',{trigger: true} );
       }
 
 

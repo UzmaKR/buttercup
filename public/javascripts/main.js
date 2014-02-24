@@ -1,12 +1,13 @@
 
 require.config({
 
-  baseURL: 'javascripts',
+  baseUrl: 'javascripts',
 
   paths: {
-  	'jquery':'//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
-  	'underscore':'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js',
-  	'backbone':'//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js'
+    'text':'lib/text',
+  	'jquery':'lib/jquery-2.1.0.min',
+  	'underscore':'lib/underscore-min',
+  	'backbone':'lib/backbone-min'
   },
 
   shim: {

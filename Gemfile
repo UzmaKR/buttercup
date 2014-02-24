@@ -22,4 +22,4 @@ group :production do
 end
 
 gem 'jquery-rails'
-ruby '2.0.0'
+# ruby '2.0.0'

@@ -1,5 +1,3 @@
-var app = app || {}
-
 define(['backbone', 'models/product'],
   function(Backbone, ProductModel) {
 
@@ -11,5 +9,3 @@ define(['backbone', 'models/product'],
 
 	});
 });
-
-app.ProductList = new app.Products();
