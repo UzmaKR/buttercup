@@ -18,8 +18,8 @@ define(['jquery', 'underscore', 'backbone', 'models/order', 'shared', 'text!temp
 
       render: function() {
         var view = this.$el.html( this.detailTmpl( this.model.toJSON() )  );
-        $('#shipwire').empty();
-        $('#shipwire').append(view);
+        $('#buttercup').empty();
+        $('#buttercup').append(view);
       },
 
       gotoOrders: function() {

@@ -20,8 +20,8 @@ define(['jquery', 'underscore', 'backbone', 'models/product', 'shared','text!tem
 
       render: function() {
         var view = this.$el.html(this.tpl(this.model.toJSON()));
-        $('#shipwire').empty();
-        $('#shipwire').append(view);
+        $('#buttercup').empty();
+        $('#buttercup').append(view);
         this.delegateEvents();
       },
 

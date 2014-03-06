@@ -8,7 +8,7 @@ define(['jquery', 'underscore', 'backbone', 'shared', 'views/product', 'text!tem
       topTpl: _.template( CatalogTmpl ),
 
       initialize: function() {
-        this.prodTable = this.$('#shipwire');
+        this.prodTable = this.$('#buttercup');
         this.render();
         $('.add-product').click(function() {
           shared.router.navigate('new', {trigger: true}); 

@@ -19,8 +19,8 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/newproduct.html', 's
 
   render: function() {
    var view = this.$el.html(this.newProdTmpl());
-   $('#shipwire').empty();
-   $('#shipwire').append(view);
+   $('#buttercup').empty();
+   $('#buttercup').append(view);
   },
 
   saveProdInfo: function(e) {

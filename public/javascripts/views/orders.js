@@ -6,7 +6,7 @@ define(['jquery', 'underscore', 'backbone', 'models/order', 'views/order', 'shar
 
       model: OrderModel,
 
-      el: '#shipwire',
+      el: '#buttercup',
 
       initialize: function() {
         this.render();

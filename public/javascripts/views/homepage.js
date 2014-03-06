@@ -3,7 +3,7 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/homePage.html', 'sha
 
     return Backbone.View.extend({
 
-      el: '#shipwire',
+      el: '#buttercup',
 
       initialize: function() {
         this.render();
